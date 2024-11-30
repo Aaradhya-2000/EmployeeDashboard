@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="registeration.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        <form onsubmit="return validatePasswords()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Create a username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password" required>
+            
+            <!-- <button type="submit">Register</button> -->
+             <button><a href="login.html" id="btn">Register</a></button>
+        </form>
+        <p id="error-message" class="error-message"></p>
+    </div>
+
+    <script>
+        document.getElementById("btn").addEventListener("click",validatePasswords);
+        function validatePasswords(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const errorMessage = document.getElementById('error-message');
+            const username = document.getElementById('username');
+       
+            
+            if (password !== confirmPassword) {
+                alert("Password do not match");
+                return false;
+            }
+
+            localStorage.setItem("username", username);
+            // localStorage.setItem("email", email);
+            localStorage.setItem("password", password);
+
+
+    // redirect to login page 
+
+    window.location.href = "login.html";
+    alert("registration successful");
+           
+        }
+
+
+    </script>
+</body>
+</html>
